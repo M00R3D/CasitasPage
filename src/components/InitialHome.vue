@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid navbar-content">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +9,7 @@
           <img src="https://i.ibb.co/Tq7v2SD/path1584.png" alt="Logo" class="logo">
           <p class="logo-text">Casitas El Salitral<br>Escápate a la naturaleza</p>
         </a>
-        <button class="btn btn-primary btn-agendar d-lg-none mt-2">Agendar Cita</button>
+        <button class="btn btn-primary btn-agendar d-lg-none mt-2" @click="showModal = true">Agendar Cita</button>
       </div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
@@ -39,13 +38,15 @@
             </ul>
           </li>
         </ul>
-        <button class="btn btn-primary btn-agendar d-none d-lg-inline-block">Agendar Cita</button>
+        <button class="btn btn-primary btn-agendar d-none d-lg-inline-block" @click="showModal = true">Agendar Cita</button>
       </div>
     </nav>
 
     <div class="banner">
       <img :src="currentBanner" alt="Banner" class="banner-image">
-      <div class="banner-text">Explora Nuestras Cabañas</div>
+      <div class="banner-text">Descubre tu refugio ideal en nuestras cabañas rusticas a solo unos minutos de la playa.
+        Sumergete en un ambiente relajante y autentico, disfruta de atardeceres unicos, el sonido del mar y la calidez de un hogar lejos de casa.
+      </div>
     </div>
 
     <div class="container mt-5 gallery">
@@ -73,14 +74,22 @@
     <footer class="bg-light text-center py-3">
       <p>&copy; 2024 Casitas El Salitral. Todos los derechos reservados.</p>
     </footer>
+
+    <AgendarCita v-if="showModal" @close="showModal = false" />
   </div>
 </template>
 
 <script>
+import AgendarCita from './AgendarCita.vue';
+
 export default {
-  name: 'HomePage',
+  name: 'InitialHome',
+  components: {
+    AgendarCita
+  },
   data() {
     return {
+      showModal: false,
       cabins: [
         { image: 'https://i.ibb.co/c3rTJvn/path359-8235235.jpg', title: 'Cabaña 1', description: 'Descripción de la cabaña 1' },
         { image: 'https://i.ibb.co/TRGMHPY/path123058912958125.jpg', title: 'Cabaña 2', description: 'Descripción de la cabaña 2' }
@@ -102,7 +111,6 @@ export default {
   }
 };
 </script>
-
 
 <style scoped>
 @import 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css';
@@ -160,8 +168,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  font-size: 3.5rem;
-  font-weight: bold;
+  font-size: 1.5rem;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 1rem 2rem;
   border-radius: 10px;
@@ -244,8 +251,7 @@ export default {
 
 footer {
   background-color: #7c9e92;
-  padding: 15px 0;
+  color: #fff;
   font-size: 0.9rem;
-  color: #000000;
 }
 </style>

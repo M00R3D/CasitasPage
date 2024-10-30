@@ -24,4 +24,24 @@ HOME
 
 
 
+
+
+}
+
+DETALLES CASITA
+{
+    foto grande
+    4 fotos pequeñas y opcion de ver mas fotos de la casita
+
+    cantidad de camas
+    cantidad de baños
+    cantidad de recamaras
+    detalles de la cocina
+    capacidad de personas maxima
+
+    descripcion
+
+    disponibilidad de dias en calendario
+
+    solicitar agendar cita(boton)
 }

@@ -1,19 +1,18 @@
 <template>
-  <InitialHome/>
-  
+  <InitialHome />
 </template>
 
 <script>
-import InitialHome from './components/InitialHome.vue'
+import InitialHome from './components/InitialHome.vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
+
 export default {
   name: 'App',
   components: {
-    
-    InitialHome
-  }
-}
+    InitialHome,
+  },
+};
 </script>
 
 <style>
