@@ -1,28 +1,25 @@
 <template>
-  <InitialHome />
+  <router-view />
 </template>
 
 <script>
-import InitialHome from './components/InitialHome.vue';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap';
+import { createRouter, createWebHistory } from 'vue-router';
+import InitialHome from './components/InitialHome.vue'; // Importa tu componente
+import DetallesCasita from './components/DetallesCasita.vue'; // Asegúrate de importar DetallesCasita
+
+const routes = [
+  { path: '/', component: InitialHome, name: 'home' },
+  { path: '/detalles-casita/:cabinIndex', component: DetallesCasita, name: 'detalles-casita' }
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+});
 
 export default {
-  name: 'App',
-  components: {
-    InitialHome,
-  },
+  setup() {
+    return { router };
+  }
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  background-color: rgb(117, 138, 141);
-}
-</style>

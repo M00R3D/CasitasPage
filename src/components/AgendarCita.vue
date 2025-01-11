@@ -1,30 +1,26 @@
 <template>
-    <div class="modal fade show" style="display: block;" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade show" style="display: block;" tabindex="-1" aria-labelledby="agendarCitaModalLabel" aria-hidden="false">
+      <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Agendar Cita</h5>
-            <button type="button" class="btn-close" @click="$emit('close')" aria-label="Close"></button>
+            <h5 class="modal-title" id="agendarCitaModalLabel">Agendar Cita</h5>
+            <button type="button" class="btn-close" @click="$emit('close')"></button>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="enviarFormulario">
+            <form @submit.prevent="agendar">
               <div class="mb-3">
-                <label for="name" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="name" required>
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" v-model="nombre" required>
               </div>
               <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" required>
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" v-model="email" required>
               </div>
               <div class="mb-3">
-                <label for="date" class="form-label">Fecha</label>
-                <input type="date" class="form-control" id="date" required>
+                <label for="fecha" class="form-label">Fecha:</label>
+                <input type="date" class="form-control" id="fecha" v-model="fecha" required>
               </div>
-              <div class="mb-3">
-                <label for="time" class="form-label">Hora</label>
-                <input type="time" class="form-control" id="time" required>
-              </div>
-              <button type="submit" class="btn btn-primary">Enviar</button>
+              <button type="submit" class="btn btn-primary">Agendar</button>
             </form>
           </div>
         </div>
@@ -34,9 +30,18 @@
   
   <script>
   export default {
+    name: 'AgendarCita',
+    data() {
+      return {
+        nombre: '',
+        email: '',
+        fecha: ''
+      };
+    },
     methods: {
-      enviarFormulario() {
-        alert('¡Tu cita ha sido agendada con éxito!');
+      agendar() {
+        // Aquí puedes agregar la lógica para manejar la cita
+        console.log(`Cita agendada: ${this.nombre}, ${this.email}, ${this.fecha}`);
         this.$emit('close');
       }
     }
@@ -45,11 +50,7 @@
   
   <style scoped>
   .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    display: block;
     background-color: rgba(0, 0, 0, 0.5);
   }
   </style>
