@@ -36,7 +36,9 @@
               </ul>
             </li>
           </ul>
-          <button class="btn-warning btn-primary btn-agendar ms-lg-3" @click="showModal = true">Agendar Cita</button>
+          <button class="btn-warning btn-primary btn-agendar ms-lg-3" @click="goToAgendarCita()">
+            Agendar Cita
+          </button>
         </div>
       </div>
     </nav>
@@ -111,6 +113,11 @@ export default {
       index = (index + 1) % this.banners.length;
       this.currentBanner = this.banners[index];
     }, 5000);
+  },
+  methods: {
+    goToAgendarCita() {
+      this.$router.push('/agendar-cita');
+    },
   },
 };
 </script>
